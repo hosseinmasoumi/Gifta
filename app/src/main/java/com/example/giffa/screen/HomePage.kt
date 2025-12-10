@@ -101,7 +101,7 @@ fun HomePage() {
                     textAlign = TextAlign.Center
                 )
 
-                Spacer(modifier = Modifier.height(50.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
                 // دکمه شروع
                 Card(
