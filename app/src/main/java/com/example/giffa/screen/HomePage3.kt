@@ -1,6 +1,7 @@
 package com.example.giffa.screen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,13 +27,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.giffa.R
 
 @Composable
-fun HomePage3() {
+fun HomePage3(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
         // پس‌زمینه
         Image(
@@ -54,7 +55,9 @@ fun HomePage3() {
             ) {
                 Image(
                     painter = painterResource(R.drawable.ssa),
-                    modifier = Modifier.size(350.dp).offset(y = 50.dp),
+                    modifier = Modifier
+                        .size(350.dp)
+                        .offset(y = 50.dp),
                     contentDescription = "لوگو گیفتا"
                 )
 
@@ -125,7 +128,11 @@ fun HomePage3() {
                             )
                         ) {
                             Box(
-                                modifier = Modifier.fillMaxSize(),
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clickable {
+                                        navController.navigate("screen4")
+                                    },
                                 contentAlignment = Alignment.Center
                             ) {
                                 Icon(
@@ -142,15 +149,15 @@ fun HomePage3() {
         }
     }
 }
-
-@Preview(
-    name = "HomePage2 Preview",
-    widthDp = 440,
-    heightDp = 956,
-    showBackground = true
-)
-@Composable
-fun HomePagePreview3() {
-    HomePage3()
-
-}
+//
+//@Preview(
+//    name = "HomePage2 Preview",
+//    widthDp = 440,
+//    heightDp = 956,
+//    showBackground = true
+//)
+//@Composable
+//fun HomePagePreview3() {
+//    HomePage3(navController)
+//
+//}

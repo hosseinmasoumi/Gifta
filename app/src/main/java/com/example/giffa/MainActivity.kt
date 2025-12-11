@@ -12,8 +12,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.giffa.screen.HomePage
+import com.example.giffa.screen.HomePage2
+import com.example.giffa.screen.HomePage3
+import com.example.giffa.screen.MyScreen
 import com.example.giffa.ui.theme.GiffaTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,8 +35,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Page1() {
-
-    rememberNavController()
+    val navController = rememberNavController()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -44,9 +48,24 @@ fun Page1() {
                 .padding(innerPadding)
                 .background(Color(0xFFFAF7F7))
         ) {
-            HomePage()
+            // فقط اینجا NavHost را قرار می‌دهیم
+            NavHost(
+                navController = navController,
+                startDestination = "home"
+            ) {
+                composable("home") {
+                    HomePage(navController)
+                }
+                composable("screen2") {
+                    HomePage2(navController)
+                }
+                composable("screen3") {
+                    HomePage3(navController)
+                }
+                composable("screen4") {
+                    MyScreen(navController)
+                }
+            }
         }
     }
-
-
 }
